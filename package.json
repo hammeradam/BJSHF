@@ -1,0 +1,28 @@
+{
+  "name": "bjshf",
+  "version": "1.0.0",
+  "description": "Backend Javascript class homework",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/hammeradam/BJSHF.git"
+  },
+  "keywords": [
+    "nodejs",
+    "nodejs",
+    "node",
+    "node-js",
+    "express",
+    "expressjs",
+    "express-js"
+  ],
+  "author": "Hammer Ádám",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/hammeradam/BJSHF/issues"
+  },
+  "homepage": "https://github.com/hammeradam/BJSHF#readme"
+}
