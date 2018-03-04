@@ -24,5 +24,8 @@
   "bugs": {
     "url": "https://github.com/hammeradam/BJSHF/issues"
   },
-  "homepage": "https://github.com/hammeradam/BJSHF#readme"
+  "homepage": "https://github.com/hammeradam/BJSHF#readme",
+  "dependencies": {
+    "express": "^4.16.2"
+  }
 }
