@@ -26,6 +26,10 @@
   },
   "homepage": "https://github.com/hammeradam/BJSHF#readme",
   "dependencies": {
+    "ejs": "^2.5.8",
     "express": "^4.16.2"
+  },
+  "devDependencies": {
+    "nodemon": "^1.17.2"
   }
 }

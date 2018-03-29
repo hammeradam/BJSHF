@@ -1,19 +1,27 @@
 .footer-icon {
-    font-size: 2rem;
-    margin-right: 0.5rem;
+  font-size: 2rem;
+  margin-right: 0.5rem;
 }
 
 .play-icon {
-    width: 30px;
-    height: 30px;
+  width: 30px;
+  height: 30px;
 }
 
 body {
-    display: flex;
-    min-height: 100vh;
-    flex-direction: column;
-  }
+  display: flex;
+  min-height: 100vh;
+  flex-direction: column;
+}
 
-  main {
-    flex: 1 0 auto;
-  }
+.card-image img {
+    height: 200px;
+}
+
+.card {
+    overflow: hidden;
+}
+
+main {
+  flex: 1 0 auto;
+}

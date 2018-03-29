@@ -1,0 +1,12 @@
+<% include header %>
+<!-- Playlist cards -->
+<main>
+    <div class="container">
+        <div class="row">
+            <% playlists.forEach(function(card) { %>
+                <% include playListcard %>
+            <% }); %>
+        </div>
+    </div>
+</main>
+<% include footer %>

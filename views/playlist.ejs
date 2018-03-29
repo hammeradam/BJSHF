@@ -1,0 +1,110 @@
+<% include header %>
+<!-- Playlist -->
+<main>
+    <div class="container">
+        <h1>List One</h1>
+        <div class="row">
+            <ul class="collection">
+                <% songs.forEach(function(song) { %>
+                    <% include songCard %>
+                <% }); %>
+            </ul>
+        </div>
+    </div>
+</main>
+
+<!-- Floating action button -->
+<div class="fixed-action-btn">
+    <a class="btn-floating btn-large red">
+        <i class="large material-icons">add</i>
+    </a>
+    <ul>
+        <li>
+            <a class="btn-floating red modal-trigger" href="#newPlaylistModal">
+                <i class="material-icons">playlist_add</i>
+            </a>
+        </li>
+        <li>
+            <a class="btn-floating red modal-trigger" href="#addSongModal">
+                <i class="material-icons">queue_music</i>
+            </a>
+        </li>
+    </ul>
+</div>
+
+<!-- New Playlist Modal -->
+<div id="newPlaylistModal" class="modal modal-fixed-footer">
+    <div class="modal-content">
+        <div class="container">
+            <h4>New Playlist</h4>
+            <form action="">
+                <div class="input-field">
+                    <input placeholder="Name" id="first_name" type="text" class="validate">
+                    <label for="first_name">Playlist Name</label>
+                </div>
+
+                <div class="input-field">
+                    <textarea id="textarea1" class="materialize-textarea" data-length="120"></textarea>
+                    <label for="textarea1">Description</label>
+                </div>
+
+                <!-- <div class="input-field">
+                    <input placeholder="Name" id="first_name" type="text" class="validate">
+                    <label for="first_name">Tags</label>
+                </div>
+
+                <a class="waves-effect waves-light btn">Add Tag</a>
+                <br>
+                <br>
+                <div class="chip">
+                    Tag
+                    <i class="close material-icons">close</i>
+                </div> -->
+
+                <div class="input-field">
+                    <div id="textarea2" class="chips"></div>
+                    <label for="textarea2">Tags</label>
+                </div>
+
+
+            </form>
+        </div>
+    </div>
+    <div class="modal-footer">
+        <a href="#!" class="modal-action modal-close waves-effect waves-green btn-flat ">Create</a>
+    </div>
+</div>
+
+<!-- Add Song Modal -->
+<div id="addSongModal" class="modal modal-fixed-footer">
+    <div class="modal-content">
+        <div class="container">
+            <h4>Add Song To Playlist</h4>
+            <form action="">
+                <div class="input-field">
+                    <input placeholder="Name" id="first_name" type="text" class="validate">
+                    <label for="first_name">Song Name</label>
+                </div>
+
+                <div class="input-field">
+                    <input placeholder="Name" id="first_name" type="text" class="validate">
+                    <label for="first_name">Artist</label>
+                </div>
+
+                <div class="input-field">
+                    <input placeholder="Name" id="first_name" type="url" class="validate">
+                    <label for="first_name">Spotify Link</label>
+                </div>
+
+                <div class="input-field">
+                    <input placeholder="Name" id="first_name" type="url" class="validate">
+                    <label for="first_name">Youtube Link</label>
+                </div>
+            </form>
+        </div>
+    </div>
+    <div class="modal-footer">
+        <a href="#!" class="modal-action modal-close waves-effect waves-green btn-flat ">Add Song</a>
+    </div>
+</div>
+<% include footer %>
