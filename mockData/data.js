@@ -1,66 +1,36 @@
-module.exports =  {
+module.exports = {
   playListcards: [
-      {
-        name: 'List One',
-        imageName: 'rock.jpeg',
-        tags: [
-          'tag1',
-          'tag2',
-          'tag3',
-          'tag4',
-        ]
-      },
-      {
-        name: 'List Two',
-        imageName: 'jazz.jpeg',
-        tags: [
-          'tag1',
-          'tag2',
-          'tag3',
-          'tag4',
-        ]
-      },
-      {
-        name: 'List Three',
-        imageName: 'blues.jpeg',
-        tags: [
-          'tag1',
-          'tag2',
-          'tag3',
-          'tag4',
-        ]
-      },
-      {
-        name: 'List Four',
-        imageName: 'concert.jpeg',
-        tags: [
-          'tag1',
-          'tag2',
-          'tag3',
-          'tag4',
-        ]
-      },
-      {
-        name: 'List Five',
-        imageName: 'turntable.jpeg',
-        tags: [
-          'tag1',
-          'tag2',
-          'tag3',
-          'tag4',
-        ]
-      },
-      {
-        name: 'List Six',
-        imageName: 'classical.jpeg',
-        tags: [
-          'tag1',
-          'tag2',
-          'tag3',
-          'tag4',
-        ]
-      },
-    ],
+    {
+      name: 'List One',
+      imageName: 'rock.jpeg',
+      tags: ['tag1', 'tag2', 'tag3', 'tag4']
+    },
+    {
+      name: 'List Two',
+      imageName: 'jazz.jpeg',
+      tags: ['tag1', 'tag2', 'tag3', 'tag4']
+    },
+    {
+      name: 'List Three',
+      imageName: 'blues.jpeg',
+      tags: ['tag1', 'tag2', 'tag3', 'tag4']
+    },
+    {
+      name: 'List Four',
+      imageName: 'concert.jpeg',
+      tags: ['tag1', 'tag2', 'tag3', 'tag4']
+    },
+    {
+      name: 'List Five',
+      imageName: 'turntable.jpeg',
+      tags: ['tag1', 'tag2', 'tag3', 'tag4']
+    },
+    {
+      name: 'List Six',
+      imageName: 'classical.jpeg',
+      tags: ['tag1', 'tag2', 'tag3', 'tag4']
+    }
+  ],
   profile: {
     name: 'hammeradam',
     joined: '2018.04.18',
@@ -91,7 +61,7 @@ module.exports =  {
     },
     {
       name: 'Sheryl Planas'
-    },
+    }
   ],
   songs: [
     {
@@ -135,4 +105,4 @@ module.exports =  {
       length: '5min 3sec'
     }
   ]
-}
+};

@@ -1,29 +1,82 @@
-let express = require('express');
-let path = require('path');
-let app = express();
+const express = require('express');
+const path = require('path');
+const app = express();
 
-// Define the port to run on
-app.set('port', 3000);
+const session = require('express-session');
+const bodyParser = require('body-parser');
+
+/**
+ * Define view engine
+ */
 app.set('view engine', 'ejs');
 
+/**
+ * Static stuff
+ */
+app.use(express.static('public'));
 
+/**
+ * Session above all
+ */
+app.use(
+  session({
+    secret: 'szupertitkostitok',
+    cookie: {
+      maxAge: 60000
+    },
+    resave: true,
+    saveUninitialized: false
+  })
+);
 
+/**
+ * Parse parameters in POST
+ */
+// for parsing application/json
+app.use(bodyParser.json());
+// for parsing application/x-www-form-urlencoded
+app.use(
+  bodyParser.urlencoded({
+    extended: true
+  })
+);
+
+/**
+ * Define the port to run on
+ */
+app.set('port', 4200);
+
+/**
+ * Creat the .tpl on the res object
+ */
 app.use('/', (req, res, next) => {
   res.tpl = {};
+  res.tpl.error = [];
+
   return next();
 });
-
-function load(req, res, next) {
-
-}
-
 
 /**
  * Include all the routes
  */
-require('./routes/routes')(app);
+require('./routes/outside')(app);
+require('./routes/playlist')(app);
+require('./routes/profile')(app);
 
-app.use(express.static('public'));
+/**
+ * Standard error handler
+ */
+app.use((err, req, res, next) => {
+  res.status(500).send('Houston, we have a problem!');
+
+  //Flush out the stack to the console
+  console.error(err.stack);
+});
+
+// Listen for requests
+let server = app.listen(app.get('port'), () => {
+  console.log('App listening on port ' + server.address().port);
+});
 
 //Routes
 // '/' GET index.html main page
@@ -51,9 +104,3 @@ app.use(express.static('public'));
 // getPlaylist: get the playlist
 // deletePlaylist: delete the playlist
 // updatePlaylist: update the playlist
-
-// Listen for requests
-let server = app.listen(app.get('port'), () => {
-  let port = server.address().port;
-  console.log('Magic happens on port ' + port);
-});

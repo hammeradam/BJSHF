@@ -10,13 +10,15 @@
                     </div>
                     <div class="card-stacked">
                         <div class="card-content">
-                            <p>Username: <%= profile.name %></p>
-                            <p>Joined: <%= profile.joined %></p>
-                            <p>Followers: <%= profile.followers %></p>
-                            <p>Following: <%= profile.following %></p>
-                            <button class="btn waves-effect waves-light" type="submit" name="action">Follow
-                                <i class="material-icons right">send</i>
-                            </button>
+                            <p>Username: <%= user.username %></p>
+                            <p>Joined: </p>
+                            <p>Followers: </p>
+                            <p>Following: </p>
+                            <% if (id != user._id){ %>
+                                <button class="btn waves-effect waves-light" type="submit" name="action">Follow
+                                    <i class="material-icons right">send</i>
+                                </button>
+                            <% } %>
                         </div>
                     </div>
                 </div>
@@ -39,19 +41,11 @@
             </div>
             <div class="card-content teal lighten-4">
                 <div id="test4">
-                    <div class="row">
-                        <% profiles.forEach(function(profile) { %>
-                            <% include profileCard %>
-                        <% }); %>
-                    </div>
+
                 </div>
 
                 <div  id="test5">
-                    <div class="row">    
-                        <% playlists.forEach(function(card) { %>
-                            <% include playListcard %>
-                        <% }); %>
-                    </div>  
+
                 </div>                
 
                 <div id="test6">
@@ -71,46 +65,6 @@
 </div>
 
 <!-- New Playlist Modal -->
-<div id="newPlaylistModal" class="modal modal-fixed-footer">
-    <div class="modal-content">
-        <div class="container">
-            <h4>New Playlist</h4>
-            <form action="">
-                <div class="input-field">
-                    <input placeholder="Name" id="first_name" type="text" class="validate">
-                    <label for="first_name">Playlist Name</label>
-                </div>
-
-                <div class="input-field">
-                    <textarea id="textarea1" class="materialize-textarea" data-length="120"></textarea>
-                    <label for="textarea1">Description</label>
-                </div>
-
-                <!-- <div class="input-field">
-                    <input placeholder="Name" id="first_name" type="text" class="validate">
-                    <label for="first_name">Tags</label>
-                </div>
-
-                <a class="waves-effect waves-light btn">Add Tag</a>
-                <br>
-                <br>
-                <div class="chip">
-                    Tag
-                    <i class="close material-icons">close</i>
-                </div> -->
-
-                <div class="input-field">
-                    <div id="textarea2" class="chips"></div>
-                    <label for="textarea2">Tags</label>
-                </div>
-
-
-            </form>
-        </div>
-    </div>
-    <div class="modal-footer">
-        <a href="#!" class="modal-action modal-close waves-effect waves-green btn-flat ">Create</a>
-    </div>
-</div>
+<% include newPlaylistModal %>
 
 <% include footer %>

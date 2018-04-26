@@ -7,42 +7,43 @@
                 <div class="card teal darken-3 center-align">
                     <div class="card-content white-text">
                         <span class="card-title">Register</span>
-                        <form action="" method="post">
+                        <form method="POST">
                             <div class='row'>
                                 <div class='input-field col s12'>
                                     <i class="material-icons prefix">email</i>
-                                    <input id="icon_prefix1" type="email" class="validate">
-                                    <label for="icon_prefix1">Email</label>
+                                    <input id="email" type="email" name="email" >
+                                    <label for="email">Email</label>
                                 </div>
                             </div>
 
                             <div class='row'>
                                 <div class='input-field col s12'>
                                     <i class="material-icons prefix">account_circle</i>
-                                    <input id="icon_prefix2" type="email" class="validate">
-                                    <label for="icon_prefix2">Username</label>
+                                    <input id="username" type="text" name="username" class="validate">
+                                    <label for="username">Username</label>
                                 </div>
                             </div>
 
                             <div class='row'>
                                 <div class='input-field col s12'>
                                     <i class="material-icons prefix">vpn_key</i>
-                                    <input id="icon_prefix3" type="password" class="validate">
-                                    <label for="icon_prefix3">Password</label>
+                                    <input id="password1" type="password" name="password1" class="validate">
+                                    <label for="password1">Password</label>
                                 </div>
                             </div>
 
                             <div class='row'>
                                 <div class='input-field col s12'>
                                     <i class="material-icons prefix">vpn_key</i>
-                                    <input id="icon_prefix4" type="password" class="validate">
-                                    <label for="icon_prefix4">Re-type Password</label>
+                                    <input id="password2" type="password" name="password2" class="validate">
+                                    <label for="password2">Re-type Password</label>
                                 </div>
+                            </div>
+
+                            <div class="card-action">
+                                <input type="submit" class="waves-effect waves-light btn-large" value="Register"/>
                             </div>
                         </form>
-                    </div>
-                    <div class="card-action">
-                        <a class="waves-effect waves-light btn-large" href="index">Register</a>
                     </div>
                 </div>
             </div>
