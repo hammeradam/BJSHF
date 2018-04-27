@@ -1,20 +1,42 @@
 const renderMW = require('../middleware/generic/render');
 const getPlaylistMW = require('../middleware/playlist/getPlaylist');
-const getUserById = require('../middleware/user/getUserById');
+const authMW = require('../middleware/generic/auth');
+const updatePlaylistMW = require('../middleware/playlist/updatePlaylist');
+const addSongMW = require('../middleware/playlist/addSong');
 
 const userModel = require('../models/user');
 const songModel = require('../models/song');
 const playlistModel = require('../models/playlist');
 
-module.exports = function(app) {
-  var objectRepository = {
+module.exports = app => {
+  let objectRepository = {
     userModel: userModel,
     songModel: songModel,
     playlistModel: playlistModel
   };
 
+  app.post(
+    '/playlist/add',
+    authMW(objectRepository),
+    updatePlaylistMW(objectRepository),
+    (req, res, next) => {
+      return res.redirect('/profile');
+    }
+  );
+
+  app.post(
+    '/playlist/:playlistid/addsong',
+    authMW(objectRepository),
+    getPlaylistMW(objectRepository),
+    addSongMW(objectRepository),
+    (req, res, next) => {
+      return res.redirect('/playlist/' + req.params.playlistid);
+    }
+  );
+
   app.use(
-    '/playlists/:playlistid',
+    '/playlist/:playlistid',
+    authMW(objectRepository),
     getPlaylistMW(objectRepository),
     renderMW(objectRepository, 'playlist')
   );

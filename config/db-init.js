@@ -1,3 +1,3 @@
-var db = require('./db.js');
+const db = require('./db.js');
 
 db.init();

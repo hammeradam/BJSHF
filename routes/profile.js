@@ -9,8 +9,8 @@ const userModel = require('../models/user');
 const songModel = require('../models/song');
 const playlistModel = require('../models/playlist');
 
-module.exports = function(app) {
-  var objectRepository = {
+module.exports = app => {
+  let objectRepository = {
     userModel: userModel,
     songModel: songModel,
     playlistModel: playlistModel
@@ -18,14 +18,15 @@ module.exports = function(app) {
 
   app.use(
     '/profile/:userid',
+    authMW(objectRepository),
     getUserById(objectRepository),
     renderMW(objectRepository, 'profile')
   );
 
-  app.use(
-    '/profile',
-    authMW(objectRepository),
-    getOwnProfileMW(objectRepository),
-    renderMW(objectRepository, 'profile')
-  );
+  // app.use(
+  //   '/profile',
+  //   authMW(objectRepository),
+  //   getOwnProfileMW(objectRepository),
+  //   renderMW(objectRepository, 'profile')
+  // );
 };

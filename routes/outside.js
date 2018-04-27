@@ -8,8 +8,8 @@ const logoutMW = require('../middleware/generic/logout');
 
 const userModel = require('../models/user');
 
-module.exports = function(app) {
-  var objectRepository = {
+module.exports = app => {
+  let objectRepository = {
     userModel: userModel
   };
 
@@ -31,9 +31,9 @@ module.exports = function(app) {
   /**
    * Main page
    */
-  app.get('/logout', logoutMW(objectRepository), function(req, res, next) {
-    res.redirect('/');
-  });
+  app.get('/logout', logoutMW(objectRepository), (req, res, next) =>
+    res.redirect('/')
+  );
 
   /**
    * Registration

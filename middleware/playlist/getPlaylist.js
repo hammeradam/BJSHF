@@ -1,27 +1,28 @@
-let requireOption = require('../common').requireOption;
+const requireOption = require('../common').requireOption;
 
 /**
  * Get the task for the taskid param
  *  - if there is no such task, redirect to /tasks
  *  - if there is one, put it on res.tpl.task
  */
-module.exports = function(objectrepository) {
-  var playlistModel = requireOption(objectrepository, 'playlistModel');
+module.exports = objectrepository => {
+  let playlistModel = requireOption(objectrepository, 'playlistModel');
 
-  return function(req, res, next) {
-    console.log(req.params.playlistid);
+  return (req, res, next) => {
+    // console.log(req.params.playlistid);
     playlistModel
       .findOne({
-        _id: req.body.playlistid
+        _id: req.params.playlistid
       })
-      .populate('_songs')
-      .populate('_owner')
-      .exec(function(err, result) {
+      // .populate('_songs')
+      // .populate('_owner')
+      .exec((err, result) => {
         if (err || !result) {
-          return res.redirect('/playlists');
+          console.log('playlist find error: ' + err);
+          return res.redirect('/profile');
         }
-
-        res.tpl.songs = result;
+        // console.log(result);
+        res.tpl.playlist = result;
         return next();
       });
   };

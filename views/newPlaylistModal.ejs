@@ -2,20 +2,20 @@
   <div class="modal-content">
       <div class="container">
           <h4>New Playlist</h4>
-          <form method="POST">
-              <div action="/playlist/add" class="input-field">
-                <input placeholder="Name" id="first_name" type="text" class="validate">
-                <label for="first_name">Playlist Name</label>
+          <form method="POST" action="/playlist/add">
+              <div class="input-field">
+                <input name="name" id="name" type="text" class="validate">
+                <label for="name">Playlist Name</label>
               </div>
 
               <div class="input-field">
-                <textarea id="textarea1" class="materialize-textarea" data-length="120"></textarea>
-                <label for="textarea1">Description</label>
+                <textarea name="description" id="description" class="materialize-textarea" data-length="120"></textarea>
+                <label for="description">Description</label>
               </div>
 
               <div class="input-field">
-                <div id="textarea2" class="chips"></div>
-                <label for="textarea2">Tags</label>
+                <div name="tags" id="tags" class="chips"></div>
+                <label for="tags">Tags</label>
               </div>
 
               <input type="submit" class="waves-effect waves-light btn-large" value="Create"/>

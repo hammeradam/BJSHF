@@ -4,8 +4,8 @@
  *    - /login when not signed in
  *    - /tasks when signed in
  */
-module.exports = function(objectrepository) {
-  return function(req, res, next) {
+module.exports = objectrepository => {
+  return (req, res, next) => {
     if (typeof req.session.userid === 'undefined') {
       return res.redirect('/login');
     } else {

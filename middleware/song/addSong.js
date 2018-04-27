@@ -1,6 +1,6 @@
 const Song = require('../models/song');
 
-module.exports = function(req, res, next) {
+module.exports = (req, res, next) => {
   if (typeof req.body.title === 'undefined') {
     return next();
   }
@@ -9,7 +9,7 @@ module.exports = function(req, res, next) {
   song.title = req.body.title;
   song.artist = req.body.artist;
 
-  task.save(function(err, result) {
+  task.save((err, result) => {
     if (err) {
       return next(err);
     }

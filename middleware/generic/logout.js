@@ -1,12 +1,10 @@
 /**
  * Logout
  */
-module.exports = function (objectrepository) {
-
-  return function (req, res, next) {
-    req.session.destroy(function (err) {
+module.exports = objectrepository => {
+  return (req, res, next) => {
+    req.session.destroy(err => {
       return next();
     });
   };
-
 };

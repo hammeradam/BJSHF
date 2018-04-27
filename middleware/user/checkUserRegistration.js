@@ -1,13 +1,13 @@
-var requireOption = require('../common').requireOption;
+const requireOption = require('../common').requireOption;
 
 /**
  * Check if the email address is already registered, if not
  * create the user (no extra checks on password)
  */
-module.exports = function(objectrepository) {
-  var UserModel = requireOption(objectrepository, 'userModel');
+module.exports = objectrepository => {
+  let UserModel = requireOption(objectrepository, 'userModel');
 
-  return function(req, res, next) {
+  return (req, res, next) => {
     //not enough parameter
     if (
       typeof req.body === 'undefined' ||
@@ -23,7 +23,7 @@ module.exports = function(objectrepository) {
       {
         email: req.body.email
       },
-      function(err, result) {
+      (err, result) => {
         if (err || result !== null) {
           res.tpl.error.push('Your email address is already registered!');
           return next();
@@ -40,12 +40,12 @@ module.exports = function(objectrepository) {
         }
 
         //create user
-        var newUser = new UserModel();
+        let newUser = new UserModel();
         newUser.username = req.body.username;
         newUser.email = req.body.email;
         newUser.password = req.body.password1;
-        console.log(newUser);
-        newUser.save(function(err) {
+        // console.log(newUser);
+        newUser.save(err => {
           //redirect to /login
           return res.redirect('/login');
         });

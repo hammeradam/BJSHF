@@ -2,10 +2,10 @@
 <!-- Playlist -->
 <main>
   <div class="container">
-    <h1>List One</h1>
+    <h1><%= playlist.name %></h1>
       <div class="row">
         <ul class="collection">
-          <% songs.forEach(function(song) { %>
+          <% playlist.songs.forEach(song => { %>
             <% include songCard %>
           <% }); %>
         </ul>

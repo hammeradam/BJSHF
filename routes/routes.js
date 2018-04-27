@@ -7,7 +7,7 @@ let userModel = {};
 // mock data
 const data = require('../mockData/data');
 
-module.exports = function(app) {
+module.exports = app => {
   let objectRepository = {
     userModel: userModel
   };
@@ -18,10 +18,7 @@ module.exports = function(app) {
   //   addSongMW(req, res, next)
   // );
 
-  app.use(
-    '/',
-    (req, res, next) => next(),
-  );
+  app.use('/', (req, res, next) => next());
 
   app.use(
     '/index',
@@ -55,5 +52,4 @@ module.exports = function(app) {
     },
     renderMW('profile')
   );
-
 };

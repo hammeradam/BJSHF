@@ -11,27 +11,33 @@ module.exports = objectrepository => {
 
   return (req, res, next) => {
     if (
-      typeof req.body.name === 'undefined' ||
-      typeof req.body.description === 'undefined'
+      typeof req.body.title === 'undefined' ||
+      typeof req.body.artist === 'undefined' ||
+      typeof req.body.youtube === 'undefined' ||
+      typeof req.body.spotify === 'undefined'
     ) {
       return next();
     }
 
-    let playlist = undefined;
-    if (typeof res.tpl.playlist !== 'undefined') {
-      playlist = res.tpl.playlist;
-    } else {
-      playlist = new playlistModel();
+    let song = undefined;
+    if (typeof res.tpl.playlist == 'undefined') {
+      return next();
     }
-    playlist.name = req.body.name;
-    playlist.desc = req.body.description;
+    song = {
+      title: req.body.title,
+      artist: req.body.artist,
+      youtube: req.body.youtube,
+      spotify: req.body.spotify
+    };
+
+    let playlist = res.tpl.playlist;
+    playlist.songs.push(song);
 
     playlist.save((err, result) => {
       if (err) {
         return next(err);
       }
-
-      return res.redirect('/playlist/' + result._id);
+      return next();
     });
   };
 };

@@ -2,28 +2,28 @@
     <div class="modal-content">
       <div class="container">
         <h4>Add Song To Playlist</h4>
-        <form  method="POST">
+        <form method="POST" action="/playlist/<%= playlist._id %>/addsong">
           <div class="input-field">
-              <input placeholder="Title" id="title" type="text" class="validate">
+              <input name="title" id="title" type="text" class="validate">
               <label for="title">Title</label>
           </div>
 
           <div class="input-field">
-              <input placeholder="Artist" id="artist" type="text" class="validate">
+              <input name="artist" id="artist" type="text" class="validate">
               <label for="artist">Artist</label>
           </div>
 
           <div class="input-field">
-            <input placeholder="Spotify Link" id="spotifyLink" type="url" class="validate">
+            <input name="spotify" id="spotifyLink" type="url" class="validate">
             <label for="spotifyLink">Spotify Link</label>
           </div>
 
           <div class="input-field">
-            <input placeholder="YouTube Link" id="youTubeLink" type="url" class="validate">
+            <input name="youtube" id="youTubeLink" type="url" class="validate">
             <label for="youTubeLink">YouTube Link</label>
           </div>
 
-          <input type="submit" class="btn btn-primary" value="Add Song"/>
+          <input type="submit" class="waves-effect waves-light btn-large" value="Add"/>
         </form>
       </div>
     </div>

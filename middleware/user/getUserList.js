@@ -1,17 +1,15 @@
-var requireOption = require('../common').requireOption;
+const requireOption = require('../common').requireOption;
 
 /**
  * Load all the users
  * and put them on res.tpl.users
  */
-module.exports = function (objectrepository) {
+module.exports = objectrepository => {
+  let userModel = requireOption(objectrepository, 'userModel');
 
-  var userModel = requireOption(objectrepository, 'userModel');
-
-  return function (req, res, next) {
-
+  return (req, res, next) => {
     //lets find the user
-    userModel.find({}, function (err, results) {
+    userModel.find({}, (err, results) => {
       if (err) {
         return next(err);
       }
@@ -20,7 +18,5 @@ module.exports = function (objectrepository) {
 
       return next();
     });
-
   };
-
 };

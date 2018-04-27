@@ -1,14 +1,14 @@
-var requireOption = require('../common').requireOption;
+const requireOption = require('../common').requireOption;
 
 /**
  * This middleware loads the user from model and checks the credentials,
  * if they are ok, set session values and redirect to /
  * if they are wrong, set error message
  */
-module.exports = function(objectrepository) {
-  var userModel = requireOption(objectrepository, 'userModel');
+module.exports = objectrepository => {
+  let userModel = requireOption(objectrepository, 'userModel');
 
-  return function(req, res, next) {
+  return (req, res, next) => {
     //not enough parameter
     if (
       typeof req.body === 'undefined' ||
@@ -23,7 +23,7 @@ module.exports = function(objectrepository) {
       {
         email: req.body.email
       },
-      function(err, result) {
+      (err, result) => {
         if (err || !result) {
           res.tpl.error.push('Your email address is not registered!');
           console.log('nincs user');
