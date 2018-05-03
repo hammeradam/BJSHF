@@ -1,41 +1,43 @@
 <% include header %>
-<!-- Playlist -->
-<main>
-  <div class="container">
-    <h1><%= playlist.name %></h1>
+  <!-- Playlist -->
+  <main>
+    <div class="container">
+      <h1>
+        <%= playlist.name %>
+      </h1>
       <div class="row">
         <ul class="collection">
-          <% playlist.songs.forEach(song => { %>
+          <% songs.forEach(song => { %>
             <% include songCard %>
-          <% }); %>
+              <% }); %>
         </ul>
+      </div>
     </div>
-  </div>
-</main>
+  </main>
 
-<!-- Floating action button -->
-<div class="fixed-action-btn">
-  <a class="btn-floating btn-large red">
-    <i class="large material-icons">add</i>
-  </a>
-  <ul>
-    <li>
-      <a class="btn-floating red modal-trigger" href="#newPlaylistModal">
+  <!-- Floating action button -->
+  <div class="fixed-action-btn">
+    <a class="btn-floating btn-large red">
+      <i class="large material-icons">add</i>
+    </a>
+    <ul>
+      <li>
+        <a class="btn-floating red modal-trigger" href="#newPlaylistModal">
           <i class="material-icons">playlist_add</i>
-      </a>
-    </li>
-    <li>
-      <a class="btn-floating red modal-trigger" href="#addSongModal">
+        </a>
+      </li>
+      <li>
+        <a class="btn-floating red modal-trigger" href="#addSongModal">
           <i class="material-icons">queue_music</i>
-      </a>
-    </li>
-  </ul>
-</div>
+        </a>
+      </li>
+    </ul>
+  </div>
 
-<!-- New Playlist Modal -->
-<% include newPlaylistModal %>
+  <!-- New Playlist Modal -->
+  <% include newPlaylistModal %>
 
-<!-- Add Song Modal -->
-<% include addSongModal %>
+    <!-- Add Song Modal -->
+    <% include addSongModal %>
 
-<% include footer %>
+      <% include footer %>

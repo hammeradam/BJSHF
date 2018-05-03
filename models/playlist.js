@@ -1,7 +1,7 @@
-const Schema = require('mongoose').Schema;
-const db = require('../config/db');
+const Schema = require("mongoose").Schema;
+const db = require("../config/db");
 
-const Playlist = db.model('Playlist', {
+const Playlist = db.model("Playlist", {
   name: {
     type: String,
     required: true
@@ -11,19 +11,19 @@ const Playlist = db.model('Playlist', {
     required: true
   },
   tags: [String],
-  songs: {
-    type: [
-      {
-        title: String,
-        artist: String,
-        youtube: String,
-        spotify: String
-      }
-    ]
-  },
+  // songs: {
+  //   type: [
+  //     {
+  //       title: String,
+  //       artist: String,
+  //       youtube: String,
+  //       spotify: String
+  //     }
+  //   ]
+  // },
   _owner: {
     type: Schema.Types.ObjectId,
-    ref: 'User'
+    ref: "User"
   }
 });
 

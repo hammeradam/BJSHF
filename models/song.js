@@ -1,10 +1,10 @@
-const Schema = require('mongoose').Schema;
-const db = require('../config/db');
+const Schema = require("mongoose").Schema;
+const db = require("../config/db");
 
-const Song = db.model('Song', {
+const Song = db.model("Song", {
   _playlist: {
     type: Schema.Types.ObjectId,
-    ref: 'Playlist',
+    ref: "Playlist",
     required: true
   },
   title: {
@@ -15,9 +15,11 @@ const Song = db.model('Song', {
     type: String,
     required: true
   },
-  length: {
-    type: Number,
-    required: true
+  youtube: {
+    type: String
+  },
+  spotify: {
+    type: String
   }
 });
 
