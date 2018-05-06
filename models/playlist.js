@@ -11,16 +11,6 @@ const Playlist = db.model("Playlist", {
     required: true
   },
   tags: [String],
-  // songs: {
-  //   type: [
-  //     {
-  //       title: String,
-  //       artist: String,
-  //       youtube: String,
-  //       spotify: String
-  //     }
-  //   ]
-  // },
   _owner: {
     type: Schema.Types.ObjectId,
     ref: "User"

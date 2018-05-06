@@ -10,7 +10,7 @@ module.exports = objectrepository => {
   let playlistModel = requireOption(objectrepository, "playlistModel");
 
   return (req, res, next) => {
-    console.log(req.body);
+    // console.log(req.body);
     if (
       typeof req.body.name === "undefined" ||
       typeof req.body.description === "undefined"
@@ -27,7 +27,7 @@ module.exports = objectrepository => {
     playlist.name = req.body.name;
     playlist.desc = req.body.description;
 
-    console.log(req.session.userid);
+    // console.log(req.session.userid);
     playlist._owner = req.session.userid;
     // playlist.tags = req.body.tags.split(",");
 

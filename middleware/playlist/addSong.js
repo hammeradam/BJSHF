@@ -5,7 +5,7 @@ module.exports = objectrepository => {
   let songModel = requireOption(objectrepository, "songModel");
 
   function saveCallback(res, next, song) {
-    song.save(function(err, result) {
+    song.save((err, result) => {
       if (err) {
         return next(err);
       }

@@ -35,50 +35,70 @@
 
                     <div class="row">
                         <div class="col s2">
-                            <a href="/" class="brand-logo">
+                            <a href="/profile" class="brand-logo">
                                 <i class="large material-icons">library_music</i>Lstn</a>
-                            <a href="/" data-activates="mobile-demo" class="button-collapse">
+                            <a href="/profile" data-activates="mobile-demo" class="button-collapse">
                                 <i class="material-icons">menu</i>
                             </a>
                         </div>
 
                         <ul class="left hide-on-med-and-down">
+                            <!--
                             <li>
                                 <a href="#">
-                                    <i class="material-icons left">search</i>Search...</a>
+                                    <i class="material-icons left">search</i>
+                                    <%= typeof user != 'undefined' ? user._id : '' %>
+                                </a>
                             </li>
+                         -->
                         </ul>
                         <ul class="right hide-on-med-and-down">
-                            <li>
-                                <a href="/profile">
-                                    <i class="material-icons left">face</i>Profile</a>
-                            </li>
-                            <li>
-                                <a href="/logout">
-                                    <i class="material-icons left">highlight_off</i>Logout</a>
-                            </li>
+                            <% if (typeof userid != 'undefined') { %>
+                                <li>
+                                    <a href="/profile">
+                                        <i class="material-icons left">face</i>Profile</a>
+                                </li>
+                                <li>
+                                    <a href="/logout">
+                                        <i class="material-icons left">highlight_off</i>Logout</a>
+                                </li>
+                                <% } else { %>
+                                    <li>
+                                        <a href="/register">
+                                            <i class="material-icons left">supervisor_account</i>Register</a>
+                                    </li>
+                                    <% } %>
                         </ul>
 
                         <ul class="side-nav" id="mobile-demo">
                             <li>
-                                <a href="/">
+                                <a href="/profile">
                                     <i class="large material-icons">library_music</i>Logo</a>
                             </li>
                             <li>
                                 <div class="divider"></div>
                             </li>
-                            <li>
+                            <!-- <li>
                                 <a href="#">
-                                    <i class="material-icons">search</i>Search...</a>
-                            </li>
-                            <li>
-                                <a href="/profile">
-                                    <i class="material-icons left">face</i>Profile</a>
-                            </li>
-                            <li>
-                                <a href="/logout">
-                                    <i class="material-icons left">highlight_off</i>Logout</a>
-                            </li>
+                                    <i class="material-icons">search</i>
+                                    <%= typeof user != 'undefined' ? user._id : '' %>
+                                </a>
+                            </li> -->
+                            <% if (typeof userid != 'undefined') { %>
+                                <li>
+                                    <a href="/profile">
+                                        <i class="material-icons left">face</i>Profile</a>
+                                </li>
+                                <li>
+                                    <a href="/logout">
+                                        <i class="material-icons left">highlight_off</i>Logout</a>
+                                </li>
+                                <% } else { %>
+                                    <li>
+                                        <a href="/register">
+                                            <i class="material-icons left">highlight_off</i>Logout</a>
+                                    </li>
+                                    <% } %>
                         </ul>
                     </div>
                 </div>

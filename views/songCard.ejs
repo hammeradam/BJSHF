@@ -5,11 +5,18 @@
   </span>
   <p>
     <%= song.artist %>
-    <br> <%= song.length %>
+      <br>
+      <%= song.length %>
   </p>
   <span class="secondary-content black-text">
-    <a href="<%= song.youtube %>"><img src="../icons/youtube-play.png" class="play-icon"></a>
-    <a href="<%= song.spotify %>"><img src="../icons/spotify.png" class="play-icon"></a>
-    <a href="/playlist/<%= playlist._id %>/deletesong/"><i class="material-icons teal-text">delete</i></a>
+    <a href="<%= song.youtube %>" target="_blank">
+      <img src="../icons/youtube-play.png" class="play-icon">
+    </a>
+    <a href="<%= song.spotify %>" target="_blank">
+      <img src="../icons/spotify.png" class="play-icon">
+    </a>
+    <a href="/song/<%= song._id %>/delete">
+      <i class="material-icons teal-text">delete</i>
+    </a>
   </span>
 </li>

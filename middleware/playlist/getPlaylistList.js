@@ -9,7 +9,6 @@ module.exports = function(objectrepository) {
 
   return function(req, res, next) {
     console.log("getplaylistlist mw");
-    console.log("getplaylistlist mw");
     if (req.params.userid) {
       playlistModel.find(
         {
@@ -17,7 +16,7 @@ module.exports = function(objectrepository) {
         },
         (err, playlists) => {
           res.tpl.playlists = playlists;
-          console.log(res.tpl.playlists);
+          // console.log(res.tpl.playlists);
           return next();
         }
       );
@@ -28,7 +27,7 @@ module.exports = function(objectrepository) {
         },
         (err, playlists) => {
           res.tpl.playlists = playlists;
-          console.log(res.tpl.playlists);
+          // console.log(res.tpl.playlists);
           return next();
         }
       );

@@ -9,7 +9,7 @@ module.exports = objectrepository => {
   let playlistModel = requireOption(objectrepository, "playlistModel");
 
   return (req, res, next) => {
-    console.log("get playlist mw. Playlsid: " + JSON.stringify(req.params));
+    // console.log("get playlist mw. Playlsid: " + JSON.stringify(req.params));
     playlistModel
       .findOne({
         _id: req.params.playlistid
@@ -19,7 +19,8 @@ module.exports = objectrepository => {
           console.log("playlist find error: " + err);
           return res.redirect("/profile");
         }
-        console.log(result);
+        // console.log(result);
+        res.tpl.userid = req.session.userid;
         res.tpl.playlist = result;
         return next();
       });

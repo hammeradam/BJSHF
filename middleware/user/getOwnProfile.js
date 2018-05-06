@@ -25,6 +25,7 @@ module.exports = objectrepository => {
         return next(err);
       }
 
+      res.tpl.userid = result._id;
       res.tpl.user = result;
       res.tpl.id = req.session.userid;
       res.tpl.playlists = [];
