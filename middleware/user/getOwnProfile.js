@@ -1,20 +1,20 @@
-const requireOption = require('../common').requireOption;
+const requireOption = require("../common").requireOption;
 
 /**
  * Load a user (if exists) with the :userid param
  * and put it on res.tpl.user
  */
 module.exports = objectrepository => {
-  let userModel = requireOption(objectrepository, 'userModel');
+  let userModel = requireOption(objectrepository, "userModel");
 
   return (req, res, next) => {
-    console.log('getownprofileMW');
+    console.log("getownprofileMW");
 
     //not enought parameter
     // console.log(req.session);
     if (
-      typeof req.session.userid === 'undefined' ||
-      req.session.userid === 'null'
+      typeof req.session.userid === "undefined" ||
+      req.session.userid === "null"
     ) {
       return next();
     }
@@ -27,6 +27,7 @@ module.exports = objectrepository => {
 
       res.tpl.user = result;
       res.tpl.id = req.session.userid;
+      res.tpl.playlists = [];
       // console.log('result: ' + result);
       return next();
     });

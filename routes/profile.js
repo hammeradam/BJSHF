@@ -1,6 +1,6 @@
 const renderMW = require("../middleware/generic/render");
 const getPlaylistMW = require("../middleware/playlist/getPlaylist");
-const getUserById = require("../middleware/user/getUserById");
+const getUserByIdMW = require("../middleware/user/getUserById");
 const checkUserLogin = require("../middleware/user/checkUserLogin");
 const authMW = require("../middleware/generic/auth");
 const getOwnProfileMW = require("../middleware/user/getOwnProfile");
@@ -20,15 +20,16 @@ module.exports = app => {
   app.use(
     "/profile/:userid",
     authMW(objectRepository),
-    getUserById(objectRepository),
+    getUserByIdMW(objectRepository),
     getPlaylistListMW(objectRepository),
     renderMW(objectRepository, "profile")
   );
 
-  // app.use(
-  //   '/profile',
-  //   authMW(objectRepository),
-  //   getOwnProfileMW(objectRepository),
-  //   renderMW(objectRepository, 'profile')
-  // );
+  app.use(
+    "/profile",
+    authMW(objectRepository),
+    getOwnProfileMW(objectRepository),
+    getPlaylistListMW(objectRepository),
+    renderMW(objectRepository, "profile")
+  );
 };

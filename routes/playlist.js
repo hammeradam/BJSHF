@@ -4,6 +4,7 @@ const authMW = require("../middleware/generic/auth");
 const updatePlaylistMW = require("../middleware/playlist/updatePlaylist");
 const addSongMW = require("../middleware/playlist/addSong");
 const getSongListMW = require("../middleware/playlist/getSongList");
+const deletePlaylistMW = require("../middleware/playlist/deletePlaylist");
 
 const userModel = require("../models/user");
 const songModel = require("../models/song");
@@ -32,6 +33,16 @@ module.exports = app => {
     addSongMW(objectRepository),
     (req, res, next) => {
       return res.redirect("/playlist/" + req.params.playlistid);
+    }
+  );
+
+  app.use(
+    "/playlist/:playlistid/delete",
+    authMW(objectRepository),
+    getPlaylistMW(objectRepository),
+    deletePlaylistMW(objectRepository),
+    function(req, res, next) {
+      return res.redirect("/profile");
     }
   );
 
