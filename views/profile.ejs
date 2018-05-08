@@ -6,13 +6,14 @@
         <div class="col s12 m6">
           <div class="card horizontal">
             <div class="card-image">
-              <img src="https://lorempixel.com/100/190/">
+              <img src="../images/profile.jpg">
             </div>
             <div class="card-stacked">
               <div class="card-content">
-                <p>Username:
+                <span class="card-title">
+                  Username:
                   <%= user.username %>
-                </p>
+                </span>
                 <!-- <p>Joined: </p>
                           <p>Followers: </p>
                           <p>Following: </p> -->
@@ -34,10 +35,10 @@
               <a href="#test4" class="white-text">People I Follow</a>
             </li>
             <li class="tab">
-              <a href="#test5" class="active white-text">My Lists</a>
+              <a href="#ownPlaylists" class="active white-text">My Lists</a>
             </li>
             <li class="tab">
-              <a href="#test6" class="white-text">Recommended</a>
+              <a href="#otherUsers" class="white-text">Other Users</a>
             </li>
           </ul>
         </div>
@@ -46,11 +47,11 @@
             <p>Maybe one day...</p>
           </div>
 
-          <div id="test5">
+          <div id="ownPlaylists">
             <% playlists.forEach(playlist => { %>
               <div class="card">
                 <div class="card-image">
-                  <img src="../images/rock.jpeg">
+                  <img src="../images/800.jpg">
                 </div>
                 <div class="card-content">
                   <span class="card-title">
@@ -70,8 +71,12 @@
               <% }); %>
           </div>
 
-          <div id="test6">
-            <p>Maybe one day...</p>
+          <div id="otherUsers">
+            <% users.forEach(profile => { %>
+              <% if (user._id.toString() != profile._id.toString()) { %>
+                <% include profileCard %>
+                  <% }%>
+                    <% }); %>
           </div>
         </div>
 

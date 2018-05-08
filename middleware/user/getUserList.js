@@ -8,6 +8,7 @@ module.exports = objectrepository => {
   let userModel = requireOption(objectrepository, 'userModel');
 
   return (req, res, next) => {
+    console.log('getUserListMW');
     //lets find the user
     userModel.find({}, (err, results) => {
       if (err) {

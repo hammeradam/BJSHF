@@ -1,34 +1,38 @@
-const requireOption = require("../common").requireOption;
+const requireOption = require('../common').requireOption;
 
+/**
+ * Add song to playlist
+ */
 module.exports = objectrepository => {
-  let playlistModel = requireOption(objectrepository, "playlistModel");
-  let songModel = requireOption(objectrepository, "songModel");
+  let playlistModel = requireOption(objectrepository, 'playlistModel');
+  let songModel = requireOption(objectrepository, 'songModel');
 
   function saveCallback(res, next, song) {
+    console.log('addSongMW');
     song.save((err, result) => {
       if (err) {
         return next(err);
       }
-      return res.redirect("/playlist/" + res.tpl.playlist._id);
+      return res.redirect('/playlist/' + res.tpl.playlist._id);
     });
   }
 
   return (req, res, next) => {
     if (
-      typeof req.body.title === "undefined" ||
-      typeof req.body.artist === "undefined" ||
-      typeof req.body.youtube === "undefined" ||
-      typeof req.body.spotify === "undefined"
+      typeof req.body.title === 'undefined' ||
+      typeof req.body.artist === 'undefined' ||
+      typeof req.body.youtube === 'undefined' ||
+      typeof req.body.spotify === 'undefined'
     ) {
       return next();
     }
 
     let song = undefined;
-    if (typeof res.tpl.playlist == "undefined") {
+    if (typeof res.tpl.playlist == 'undefined') {
       return next();
     }
 
-    if (typeof res.tpl.comment !== "undefined") {
+    if (typeof res.tpl.comment !== 'undefined') {
       song = res.tpl.song;
 
       return saveCallback(res, next, song);

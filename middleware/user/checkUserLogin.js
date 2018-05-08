@@ -9,6 +9,7 @@ module.exports = objectrepository => {
   let userModel = requireOption(objectrepository, 'userModel');
 
   return (req, res, next) => {
+    console.log('checkUserLoginMW');
     //not enough parameter
     if (
       typeof req.body === 'undefined' ||

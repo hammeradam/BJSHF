@@ -1,14 +1,13 @@
 const requireOption = require('../common').requireOption;
 
 /**
- * Get the comment for the :taskid task
- *  - if there is one, put it on res.tpl.comments
+ * Get the users playlists
  */
 module.exports = function(objectrepository) {
   var playlistModel = requireOption(objectrepository, 'playlistModel');
 
   return function(req, res, next) {
-    console.log('getplaylistlist mw');
+    console.log('getPlaylistListMW');
     if (req.params.userid) {
       playlistModel.find(
         {

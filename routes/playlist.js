@@ -1,15 +1,15 @@
-const renderMW = require("../middleware/generic/render");
-const getPlaylistMW = require("../middleware/playlist/getPlaylist");
-const authMW = require("../middleware/generic/auth");
-const updatePlaylistMW = require("../middleware/playlist/updatePlaylist");
-const addSongMW = require("../middleware/playlist/addSong");
-const getSongListMW = require("../middleware/playlist/getSongList");
-const deletePlaylistMW = require("../middleware/playlist/deletePlaylist");
-const deleteSongMW = require("../middleware/playlist/deleteSong");
+const renderMW = require('../middleware/generic/render');
+const getPlaylistMW = require('../middleware/playlist/getPlaylist');
+const authMW = require('../middleware/generic/auth');
+const updatePlaylistMW = require('../middleware/playlist/updatePlaylist');
+const addSongMW = require('../middleware/playlist/addSong');
+const getSongListMW = require('../middleware/playlist/getSongList');
+const deletePlaylistMW = require('../middleware/playlist/deletePlaylist');
+const deleteSongMW = require('../middleware/playlist/deleteSong');
 
-const userModel = require("../models/user");
-const songModel = require("../models/song");
-const playlistModel = require("../models/playlist");
+const userModel = require('../models/user');
+const songModel = require('../models/song');
+const playlistModel = require('../models/playlist');
 
 module.exports = app => {
   let objectRepository = {
@@ -18,49 +18,64 @@ module.exports = app => {
     playlistModel: playlistModel
   };
 
+  /**
+   * Add playlist
+   */
   app.post(
-    "/playlist/add",
+    '/playlist/add',
     authMW(objectRepository),
     updatePlaylistMW(objectRepository),
     (req, res, next) => {
-      return res.redirect("/profile");
+      return res.redirect('/profile');
     }
   );
 
+  /**
+   * Add song to playlist
+   */
   app.post(
-    "/playlist/:playlistid/addsong",
+    '/playlist/:playlistid/addsong',
     authMW(objectRepository),
     getPlaylistMW(objectRepository),
     addSongMW(objectRepository),
     (req, res, next) => {
-      return res.redirect("/playlist/" + req.params.playlistid);
+      return res.redirect('/playlist/' + req.params.playlistid);
     }
   );
 
+  /**
+   * Delete playlist
+   */
   app.use(
-    "/playlist/:playlistid/delete",
+    '/playlist/:playlistid/delete',
     authMW(objectRepository),
     getPlaylistMW(objectRepository),
     deletePlaylistMW(objectRepository),
     function(req, res, next) {
-      return res.redirect("/profile");
+      return res.redirect('/profile');
     }
   );
 
+  /**
+   * Load playlist
+   */
   app.use(
-    "/playlist/:playlistid",
+    '/playlist/:playlistid',
     authMW(objectRepository),
     getPlaylistMW(objectRepository),
     getSongListMW(objectRepository),
-    renderMW(objectRepository, "playlist")
+    renderMW(objectRepository, 'playlist')
   );
 
+  /**
+   * Delete song
+   */
   app.use(
-    "/song/:songid/delete",
+    '/song/:songid/delete',
     authMW(objectRepository),
     deleteSongMW(objectRepository),
     function(req, res, next) {
-      return res.redirect("/profile");
+      return res.redirect('/profile');
     }
   );
 };

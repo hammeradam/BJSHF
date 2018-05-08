@@ -1,16 +1,17 @@
 <div class="col s12 m6 l6">
   <div class="card horizontal">
     <div class="card-image">
-      <img src="https://lorempixel.com/125/125">
+      <img src="../images/400.jpg">
     </div>
     <div class="card-stacked">
       <div class="card-content">
-        <p>
-          <%= profile.name %>
-        </p>
+        <span class="card-title">
+          Username:
+          <%= user.username %>
+        </span>
       </div>
       <div class="card-action">
-        <a href="#">Visit Profile</a>
+        <a href="/profile/<%= profile._id.toString() %>">Visit Profile</a>
       </div>
     </div>
   </div>

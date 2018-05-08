@@ -1,10 +1,10 @@
-const Schema = require("mongoose").Schema;
-const db = require("../config/db");
+const Schema = require('mongoose').Schema;
+const db = require('../config/db');
 
-const Song = db.model("Song", {
+const Song = db.model('Song', {
   _playlist: {
     type: Schema.Types.ObjectId,
-    ref: "Playlist",
+    ref: 'Playlist',
     required: true
   },
   title: {

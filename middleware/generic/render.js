@@ -3,6 +3,7 @@
  */
 module.exports = (objectrepository, viewName) => {
   return (req, res) => {
+    console.log('renderMW');
     res.render(viewName, res.tpl);
   };
 };

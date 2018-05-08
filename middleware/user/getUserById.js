@@ -8,7 +8,7 @@ module.exports = objectrepository => {
   let userModel = requireOption(objectrepository, 'userModel');
 
   return (req, res, next) => {
-    console.log('getuserbyidMW');
+    console.log('getUserByIdMW');
 
     //not enought parameter
     if (

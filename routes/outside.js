@@ -1,16 +1,14 @@
-const mainRedirectMW = require("../middleware/generic/mainRedirect");
-const inverseAuthMW = require("../middleware/generic/inverseAuth");
-const checkUserLoginMW = require("../middleware/user/checkUserLogin");
-const checkUserRegistrationMW = require("../middleware/user/checkUserRegistration");
-const renderMW = require("../middleware/generic/render");
-const authMW = require("../middleware/generic/auth");
-const logoutMW = require("../middleware/generic/logout");
+const mainRedirectMW = require('../middleware/generic/mainRedirect');
+const inverseAuthMW = require('../middleware/generic/inverseAuth');
+const checkUserLoginMW = require('../middleware/user/checkUserLogin');
+const checkUserRegistrationMW = require('../middleware/user/checkUserRegistration');
+const renderMW = require('../middleware/generic/render');
+const logoutMW = require('../middleware/generic/logout');
+const databaseMW = require('../middleware/generic/database');
 
-const databaseMW = require("../middleware/generic/database");
-
-const userModel = require("../models/user");
-const playlistModel = require("../models/playlist");
-const songModel = require("../models/song");
+const userModel = require('../models/user');
+const playlistModel = require('../models/playlist');
+const songModel = require('../models/song');
 
 module.exports = app => {
   let objectRepository = {
@@ -22,36 +20,39 @@ module.exports = app => {
   /**
    * Main page
    */
-  app.get("/", mainRedirectMW(objectRepository));
+  app.get('/', mainRedirectMW(objectRepository));
 
   /**
    * Login page
    */
   app.use(
-    "/login",
+    '/login',
     inverseAuthMW(objectRepository),
     checkUserLoginMW(objectRepository),
-    renderMW(objectRepository, "login")
+    renderMW(objectRepository, 'login')
   );
 
   /**
    * Main page
    */
-  app.get("/logout", logoutMW(objectRepository), (req, res, next) =>
-    res.redirect("/")
+  app.get('/logout', logoutMW(objectRepository), (req, res, next) =>
+    res.redirect('/')
   );
 
   /**
    * Registration
    */
   app.use(
-    "/register",
+    '/register',
     inverseAuthMW(objectRepository),
     checkUserRegistrationMW(objectRepository),
-    renderMW(objectRepository, "register")
+    renderMW(objectRepository, 'register')
   );
 
-  app.get("/database", databaseMW(objectRepository), (req, res, next) =>
-    res.redirect("/")
+  /**
+   * Database initialization
+   */
+  app.get('/database', databaseMW(objectRepository), (req, res, next) =>
+    res.redirect('/')
   );
 };

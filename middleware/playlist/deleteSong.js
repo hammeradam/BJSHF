@@ -6,7 +6,7 @@ module.exports = function(objectrepository) {
   let songModel = requireOption(objectrepository, 'songModel');
 
   return function(req, res, next) {
-    console.log('delete song mw');
+    console.log('deleteSongMW');
     if (
       typeof req.params.songid === 'undefined' ||
       req.params.songid === 'null'
