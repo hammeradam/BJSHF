@@ -44,7 +44,6 @@ module.exports = objectrepository => {
         newUser.username = req.body.username;
         newUser.email = req.body.email;
         newUser.password = req.body.password1;
-        // console.log(newUser);
         newUser.save(err => {
           //redirect to /login
           return res.redirect('/login');

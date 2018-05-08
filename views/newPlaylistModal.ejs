@@ -1,25 +1,25 @@
 <div id="newPlaylistModal" class="modal modal-fixed-footer">
   <div class="modal-content">
-      <div class="container">
-          <h4>New Playlist</h4>
-          <form method="POST" action="/playlist/add">
-              <div class="input-field">
-                <input name="name" id="name" type="text" class="validate">
-                <label for="name">Playlist Name</label>
-              </div>
+    <div class="container">
+      <h4>New Playlist</h4>
+      <form method="POST" action="/playlist/add">
+        <div class="input-field">
+          <input name="name" id="name" type="text" class="validate">
+          <label for="name">Playlist Name</label>
+        </div>
 
-              <div class="input-field">
-                <textarea name="description" id="description" class="materialize-textarea" data-length="120"></textarea>
-                <label for="description">Description</label>
-              </div>
+        <div class="input-field">
+          <textarea name="description" id="description" class="materialize-textarea" data-length="120"></textarea>
+          <label for="description">Description</label>
+        </div>
 
-              <div class="input-field">
-                <div name="tags" id="tags" class="chips"></div>
-                <label for="tags">Tags</label>
-              </div>
+        <div class="input-field">
+          <div name="tags" id="tags" class="chips"></div>
+          <label for="tags">Tags</label>
+        </div>
 
-              <input type="submit" class="waves-effect waves-light btn-large" value="Create"/>
-          </form>
-      </div>
+        <input type="submit" class="waves-effect waves-light btn-large" value="Create" />
+      </form>
+    </div>
   </div>
 </div>

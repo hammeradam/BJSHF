@@ -1,4 +1,4 @@
-const requireOption = require("../common").requireOption;
+const requireOption = require('../common').requireOption;
 
 /**
  * Get the task for the taskid param
@@ -6,20 +6,17 @@ const requireOption = require("../common").requireOption;
  *  - if there is one, put it on res.tpl.task
  */
 module.exports = objectrepository => {
-  let playlistModel = requireOption(objectrepository, "playlistModel");
+  let playlistModel = requireOption(objectrepository, 'playlistModel');
 
   return (req, res, next) => {
-    // console.log("get playlist mw. Playlsid: " + JSON.stringify(req.params));
     playlistModel
       .findOne({
         _id: req.params.playlistid
       })
       .exec((err, result) => {
         if (err || !result) {
-          console.log("playlist find error: " + err);
-          return res.redirect("/profile");
+          return res.redirect('/profile');
         }
-        // console.log(result);
         res.tpl.userid = req.session.userid;
         res.tpl.playlist = result;
         return next();

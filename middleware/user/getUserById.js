@@ -1,19 +1,19 @@
-const requireOption = require("../common").requireOption;
+const requireOption = require('../common').requireOption;
 
 /**
  * Load a user (if exists) with the :userid param
  * and put it on res.tpl.user
  */
 module.exports = objectrepository => {
-  let userModel = requireOption(objectrepository, "userModel");
+  let userModel = requireOption(objectrepository, 'userModel');
 
   return (req, res, next) => {
-    console.log("getuserbyidMW");
+    console.log('getuserbyidMW');
 
     //not enought parameter
     if (
-      typeof req.params.userid === "undefined" ||
-      req.params.userid === "null"
+      typeof req.params.userid === 'undefined' ||
+      req.params.userid === 'null'
     ) {
       if (req.session.userid) {
         userModel.findOne({ _id: req.session.userid }, (err, result) => {
@@ -24,7 +24,6 @@ module.exports = objectrepository => {
           res.tpl.userid = result._id;
           res.tpl.user = result;
           res.tpl.id = req.session.userid;
-          // console.log(result);
         });
       }
       return next();
@@ -39,7 +38,6 @@ module.exports = objectrepository => {
       res.tpl.userid = result._id;
       res.tpl.user = result;
       res.tpl.id = req.session.userid;
-      // console.log(result);
       return next();
     });
   };
