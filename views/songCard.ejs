@@ -12,11 +12,15 @@
     <a href="<%= song.youtube %>" target="_blank">
       <img src="../icons/youtube-play.png" class="play-icon">
     </a>
+
     <a href="<%= song.spotify %>" target="_blank">
       <img src="../icons/spotify.png" class="play-icon">
     </a>
-    <a href="/song/<%= song._id %>/delete">
-      <i class="material-icons teal-text">delete</i>
-    </a>
+
+    <% if (loggedInUserId == playlist._owner.toString()){ %>
+      <a href="/song/<%= song._id %>/delete">
+        <i class="material-icons teal-text">delete</i>
+      </a>
+      <% } %>
   </span>
 </li>

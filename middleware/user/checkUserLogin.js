@@ -40,7 +40,7 @@ module.exports = objectrepository => {
         req.session.userid = result._id;
 
         //redirect to / so the app can decide where to go next
-        return res.redirect('/profile/' + req.session.userid);
+        return res.redirect('/profile/');
       }
     );
   };

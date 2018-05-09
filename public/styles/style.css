@@ -14,14 +14,28 @@ body {
   flex-direction: column;
 }
 
-.card-image img {
-    height: 200px;
+/* .card-image img {
+  height: 200px;
+} */
+
+.parent {
+  height: 200px;
+}
+
+img {
+  display: block;
+  width: 100%;
+  height: auto;
 }
 
 .card {
-    overflow: hidden;
+  overflow: hidden;
 }
 
 main {
   flex: 1 0 auto;
+}
+
+a {
+  color: white;
 }

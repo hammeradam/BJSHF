@@ -4,9 +4,11 @@
     <div class="container">
       <h1>
         <%= playlist.name %>
-          <a href="/playlist/<%= playlist._id %>/delete">
-            <i class="medium material-icons teal-text right">delete</i>
-          </a>
+          <% if (loggedInUserId == playlist._owner.toString()){ %>
+            <a href="/playlist/<%= playlist._id %>/delete">
+              <i class="medium material-icons teal-text right">delete</i>
+            </a>
+            <% } %>
       </h1>
       <p>
         <%= playlist.desc %>
@@ -22,28 +24,30 @@
   </main>
 
   <!-- Floating action button -->
-  <div class="fixed-action-btn">
-    <a class="btn-floating btn-large red">
-      <i class="large material-icons">add</i>
-    </a>
-    <ul>
-      <li>
-        <a class="btn-floating red modal-trigger" href="#newPlaylistModal">
-          <i class="material-icons">playlist_add</i>
-        </a>
-      </li>
-      <li>
-        <a class="btn-floating red modal-trigger" href="#addSongModal">
-          <i class="material-icons">queue_music</i>
-        </a>
-      </li>
-    </ul>
-  </div>
+  <% if (loggedInUserId == playlist._owner.toString()){ %>
+    <div class="fixed-action-btn">
+      <a class="btn-floating btn-large red">
+        <i class="large material-icons">add</i>
+      </a>
+      <ul>
+        <li>
+          <a class="btn-floating red modal-trigger" href="#newPlaylistModal">
+            <i class="material-icons">playlist_add</i>
+          </a>
+        </li>
+        <li>
+          <a class="btn-floating red modal-trigger" href="#addSongModal">
+            <i class="material-icons">queue_music</i>
+          </a>
+        </li>
+      </ul>
+    </div>
+    <% } %>
 
-  <!-- New Playlist Modal -->
-  <% include newPlaylistModal %>
+      <!-- New Playlist Modal -->
+      <% include newPlaylistModal %>
 
-    <!-- Add Song Modal -->
-    <% include addSongModal %>
+        <!-- Add Song Modal -->
+        <% include addSongModal %>
 
-      <% include footer %>
+          <% include footer %>

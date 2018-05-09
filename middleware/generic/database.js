@@ -14,10 +14,78 @@ module.exports = objectrepository => {
     songModel.remove({}, err => console.log(err));
     userModel.remove({}, err => console.log(err));
 
+    let user1 = makeUser('Aladár', 'test@test.test', 'test');
+    let user2 = makeUser('Béla', 'bela@gmail.com', 'jelszo');
+    let user3 = makeUser('Cecil', 'cecil@gmail.com', 'jelszo');
+    let user4 = makeUser('Dénes', 'denes@gmail.com', 'jelszo');
+    let user5 = makeUser('Elemér', 'elemer@gmail.com', 'jelszo');
+
+    const desc =
+      'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin non ex ex. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Nam id ex ut quam bibendum ultricies ac non turpis.';
+
+    // User 1
+    let playlist1 = makePlaylist('Playlist One', desc, user1);
+    let playlist2 = makePlaylist('Playlist Two', desc, user1);
+    let playlist3 = makePlaylist('Playlist Three', desc, user1);
+
+    let song1 = makeSong(
+      'Praise You',
+      'Fatboy Slim',
+      'https://www.youtube.com/watch?v=Ex1qzIggZnA',
+      'https://open.spotify.com/track/2auqHGPYKXr5fnHRWKliRi',
+      playlist1
+    );
+    let song2 = makeSong(
+      'Marling',
+      'Fid Mella',
+      'https://www.youtube.com/watch?v=CeGB-y5isoQ',
+      'https://open.spotify.com/track/1COemjYqTAB1bZvRX0EtVh',
+      playlist1
+    );
+    let song3 = makeSong(
+      'Blackbird',
+      'Nico Push',
+      'https://www.youtube.com/watch?v=xeX1x8wlkjE',
+      'https://open.spotify.com/track/6nvlvmztDG0S5Z5WRPuuDR',
+      playlist1
+    );
+    // End of User 1
+
+    // User 2
+    let playlist4 = makePlaylist('Playlist Four', desc, user2);
+    let playlist5 = makePlaylist('Playlist Five', desc, user2);
+    let playlist6 = makePlaylist('Playlist Three', desc, user2);
+
+    let song4 = makeSong(
+      'Palms',
+      'Quixotic',
+      'https://www.youtube.com/watch?v=mv1XUyRqcGU',
+      'https://open.spotify.com/track/1DshPiRbHlhEz3ZVnMANAk',
+      playlist4
+    );
+    let song5 = makeSong(
+      'Materialism',
+      'LTR',
+      'https://www.youtube.com/watch?v=LsEpkNoLhIA',
+      'https://open.spotify.com/track/7whpJCMiIrC8SWngsHJWq1',
+      playlist4
+    );
+    let song6 = makeSong(
+      'The Eponym',
+      'Chill Bump',
+      'https://www.youtube.com/watch?v=PlBTqsWJyas',
+      'https://open.spotify.com/track/5xRoZqrP6dueYhZy5EW9jK',
+      playlist4
+    );
+    // End of User 2
+    return next();
+  };
+
+  function makeUser(name, email, password) {
     let user = new userModel();
-    user.username = 'test';
-    user.email = 'test@test.test';
-    user.password = 'test';
+    user.username = name;
+    user.email = email;
+    user.password = password;
 
     user.save((err, result) => {
       if (err) {
@@ -25,97 +93,38 @@ module.exports = objectrepository => {
       }
     });
 
-    userModel
-      .findOne({
-        username: user.username
-      })
-      .exec((err, result) => {
-        user.id = result;
-      });
+    return user;
+  }
 
-    let playlist1 = new playlistModel();
-    playlist1.name = 'Playlist One';
-    playlist1.desc =
-      'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin non ex ex. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Nam id ex ut quam bibendum ultricies ac non turpis.';
-    playlist1._owner = user.id;
+  function makePlaylist(name, desc, owner) {
+    let playlist = new playlistModel();
+    playlist.name = name;
+    playlist.desc = desc;
+    playlist._owner = owner._id;
 
-    playlist1.save((err, result) => {
+    playlist.save((err, result) => {
       if (err) {
         return next(err);
       }
     });
 
-    let playlist2 = new playlistModel();
-    playlist2.name = 'Playlist Two';
-    playlist2.desc =
-      'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin non ex ex. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Nam id ex ut quam bibendum ultricies ac non turpis.';
-    playlist2._owner = user.id;
+    return playlist;
+  }
 
-    playlist2.save((err, result) => {
+  function makeSong(title, artist, youtube, spotify, playlist) {
+    let song = new songModel();
+    song.title = title;
+    song.artist = artist;
+    song.youtube = youtube;
+    song.spotify = spotify;
+    song._playlist = playlist._id;
+
+    song.save((err, result) => {
       if (err) {
         return next(err);
       }
     });
 
-    let playlist3 = new playlistModel();
-    playlist3.name = 'Playlist Three';
-    playlist3.desc =
-      'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin non ex ex. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Nam id ex ut quam bibendum ultricies ac non turpis.';
-    playlist3._owner = user.id;
-
-    playlist3.save((err, result) => {
-      if (err) {
-        return next(err);
-      }
-    });
-
-    playlistModel
-      .findOne({
-        name: playlist1.name
-      })
-      .exec((err, result) => {
-        playlist1.id = result;
-      });
-
-    let song1 = new songModel();
-    song1.title = 'Praise You';
-    song1.artist = 'Fatboy Slim';
-    song1._playlist = playlist1.id;
-    song1.youtube = 'https://www.youtube.com/watch?v=Ex1qzIggZnA';
-    song1.spotify = 'https://www.spotify.com/';
-
-    song1.save((err, result) => {
-      if (err) {
-        return next(err);
-      }
-    });
-
-    let song2 = new songModel();
-    song2.title = 'Marling';
-    song2.artist = 'Fid Mella';
-    song2._playlist = playlist1.id;
-    song2.youtube = 'https://www.youtube.com/watch?v=Ex1qzIggZnA';
-    song2.spotify = 'https://www.spotify.com/';
-
-    song2.save((err, result) => {
-      if (err) {
-        return next(err);
-      }
-    });
-
-    let song3 = new songModel();
-    song3.title = 'Blackbird';
-    song3.artist = 'Nico Push';
-    song3._playlist = playlist1.id;
-    song3.youtube = 'https://www.youtube.com/watch?v=xeX1x8wlkjE';
-    song3.spotify = 'https://www.spotify.com/';
-
-    song3.save((err, result) => {
-      if (err) {
-        return next(err);
-      }
-    });
-
-    return next();
-  };
+    return song;
+  }
 };

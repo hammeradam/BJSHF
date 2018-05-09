@@ -18,13 +18,14 @@ module.exports = function(objectrepository) {
       if (err) {
         return next(err);
       }
+      const playlistId = result._playlist.toString();
 
       result.remove(function(err) {
         if (err) {
           return next(err);
         }
 
-        res.redirect('/profile');
+        res.redirect('/playlist/' + result._playlist.toString());
       });
     });
   };

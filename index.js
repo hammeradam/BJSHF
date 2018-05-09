@@ -57,6 +57,14 @@ app.use('/', (req, res, next) => {
 });
 
 /**
+ * Add logged in user to res.locals
+ */
+// app.use((req, res, next) => {
+//   res.locals.userLoggedIn = req.session.user;
+//   next();
+// });
+
+/**
  * Include all the routes
  */
 require('./routes/outside')(app);
