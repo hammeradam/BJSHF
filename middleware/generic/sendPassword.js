@@ -17,9 +17,9 @@ module.exports = objectrepository => {
       return next();
     }
     userModel.findOne({ email: req.body.forgottenemail }, (err, result) => {
-      if (err) {
-        return next(err);
-        console.log('no user with email: ' + req.body.forgottenemail);
+      if (err || result == null) {
+        res.tpl.error.push('This email address is not registered!');
+        return next();
       }
 
       const transporter = nodemailer.createTransport({
@@ -39,7 +39,7 @@ module.exports = objectrepository => {
         }.`
       };
 
-      transporter.sendMail(mailOptions, function(error, info) {
+      transporter.sendMail(mailOptions, (error, info) => {
         if (error) {
           console.log(error);
         } else {

@@ -37,31 +37,25 @@
             </div>
 
             <ul class="left hide-on-med-and-down">
-              <!--
-                            <li>
-                                <a href="#">
-                                    <i class="material-icons left">search</i>
-                                    <%= typeof user != 'undefined' ? user._id : '' %>
-                                </a>
-                            </li>
-                         -->
             </ul>
             <ul class="right hide-on-med-and-down">
               <% if (typeof loggedInUserId != 'undefined') { %>
-                <li>
-                  <a href="/profile">
-                    <i class="material-icons left">face</i>Profile</a>
-                </li>
-                <li>
-                  <a href="/logout">
-                    <i class="material-icons left">highlight_off</i>Logout</a>
-                </li>
-                <% } else { %>
+                <% if (typeof user != 'undefined' && user._id.toString() !== loggedInUserId) { %>
                   <li>
-                    <a href="/register">
-                      <i class="material-icons left">supervisor_account</i>Register</a>
+                    <a href="/profile">
+                      <i class="material-icons left">face</i>Profile</a>
                   </li>
                   <% } %>
+                    <li>
+                      <a href="/logout">
+                        <i class="material-icons left">highlight_off</i>Logout</a>
+                    </li>
+                    <% } else { %>
+                      <li>
+                        <a href="/register">
+                          <i class="material-icons left">supervisor_account</i>Register</a>
+                      </li>
+                      <% } %>
             </ul>
 
             <ul class="side-nav" id="mobile-demo">
@@ -72,27 +66,24 @@
               <li>
                 <div class="divider"></div>
               </li>
-              <!-- <li>
-                                <a href="#">
-                                    <i class="material-icons">search</i>
-                                    <%= typeof user != 'undefined' ? user._id : '' %>
-                                </a>
-                            </li> -->
+
               <% if (typeof loggedInUserId != 'undefined') { %>
-                <li>
-                  <a href="/profile">
-                    <i class="material-icons left">face</i>Profile</a>
-                </li>
-                <li>
-                  <a href="/logout">
-                    <i class="material-icons left">highlight_off</i>Logout</a>
-                </li>
-                <% } else { %>
+                <% if (typeof user != 'undefined' && user._id.toString() !== loggedInUserId) { %>
                   <li>
-                    <a href="/register">
-                      <i class="material-icons left">highlight_off</i>Logout</a>
+                    <a href="/profile">
+                      <i class="material-icons left">face</i>Profile</a>
                   </li>
                   <% } %>
+                    <li>
+                      <a href="/logout">
+                        <i class="material-icons left">highlight_off</i>Logout</a>
+                    </li>
+                    <% } else { %>
+                      <li>
+                        <a href="/register">
+                          <i class="material-icons left">highlight_off</i>Logout</a>
+                      </li>
+                      <% } %>
             </ul>
           </div>
         </div>

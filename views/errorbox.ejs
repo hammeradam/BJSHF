@@ -1,0 +1,11 @@
+<% if (error.length > 0) { %>
+  <div class="col s12 m6 push-l3 push-m3">
+    <% error.forEach(item => { %>
+      <div class="card-panel red accent-3">
+        <span class="white-text">
+          <%= item %>
+        </span>
+      </div>
+      <% }); %>
+  </div>
+  <% } %>
