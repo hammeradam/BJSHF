@@ -4,7 +4,7 @@ const requireOption = require('../common').requireOption;
  * Get the users playlists
  */
 module.exports = function(objectrepository) {
-  var playlistModel = requireOption(objectrepository, 'playlistModel');
+  let playlistModel = requireOption(objectrepository, 'playlistModel');
 
   return function(req, res, next) {
     console.log('getPlaylistListMW');

@@ -5,7 +5,7 @@ const requireOption = require('../common').requireOption;
  *  - if there is one, put it on res.tpl.songs
  */
 module.exports = function(objectrepository) {
-  var songModel = requireOption(objectrepository, 'songModel');
+  let songModel = requireOption(objectrepository, 'songModel');
 
   return function(req, res, next) {
     console.log('getSongListMW');

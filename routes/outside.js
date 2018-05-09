@@ -5,6 +5,7 @@ const checkUserRegistrationMW = require('../middleware/user/checkUserRegistratio
 const renderMW = require('../middleware/generic/render');
 const logoutMW = require('../middleware/generic/logout');
 const databaseMW = require('../middleware/generic/database');
+const sendPasswordMW = require('../middleware/generic/sendPassword');
 
 const userModel = require('../models/user');
 const playlistModel = require('../models/playlist');
@@ -54,5 +55,12 @@ module.exports = app => {
    */
   app.get('/database', databaseMW(objectRepository), (req, res, next) =>
     res.redirect('/')
+  );
+
+  app.use(
+    '/forgotten',
+    inverseAuthMW(objectRepository),
+    sendPasswordMW(objectRepository),
+    renderMW(objectRepository, 'forgotten')
   );
 };
