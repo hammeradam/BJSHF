@@ -1,9 +1,5 @@
 const requireOption = require('../common').requireOption;
 
-/**
- * Load a user (if exists) with the :userid param
- * and put it on res.tpl.user
- */
 module.exports = objectrepository => {
   let userModel = requireOption(objectrepository, 'userModel');
 
@@ -21,9 +17,9 @@ module.exports = objectrepository => {
             return next(err);
           }
 
-          res.tpl.userid = result._id;
           res.tpl.user = result;
           res.tpl.id = req.session.userid;
+          res.tpl.playlists = [];
         });
       }
       return next();
@@ -35,7 +31,6 @@ module.exports = objectrepository => {
         return next(err);
       }
 
-      res.tpl.userid = result._id;
       res.tpl.user = result;
       res.tpl.id = req.session.userid;
       return next();

@@ -18,14 +18,16 @@ body {
   height: 200px;
 } */
 
-.parent {
-  height: 200px;
+/* .parent {
+  height: match-parent;
 }
 
 img {
-  display: block;
-  width: 100%;
-  height: auto;
+  height: match-parent;
+} */
+
+.profile-card-img {
+  height: 200px;
 }
 
 .card {

@@ -7,6 +7,9 @@ module.exports = objectrepository => {
     if (typeof req.session.userid === 'undefined') {
       return res.redirect('/');
     }
+
+    // For later use in ejs
+    res.tpl.loggedInUserId = req.session.userid;
     return next();
   };
 };

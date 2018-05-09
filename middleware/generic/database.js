@@ -54,7 +54,7 @@ module.exports = objectrepository => {
     // User 2
     let playlist4 = makePlaylist('Playlist Four', desc, user2);
     let playlist5 = makePlaylist('Playlist Five', desc, user2);
-    let playlist6 = makePlaylist('Playlist Three', desc, user2);
+    let playlist6 = makePlaylist('Playlist Six', desc, user2);
 
     let song4 = makeSong(
       'Palms',

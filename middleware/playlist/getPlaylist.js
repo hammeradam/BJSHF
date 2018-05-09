@@ -18,7 +18,6 @@ module.exports = objectrepository => {
         if (err || !result) {
           return res.redirect('/profile');
         }
-        res.tpl.userid = req.session.userid;
         res.tpl.playlist = result;
         return next();
       });

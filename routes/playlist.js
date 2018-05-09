@@ -2,11 +2,10 @@ const renderMW = require('../middleware/generic/render');
 const getPlaylistMW = require('../middleware/playlist/getPlaylist');
 const authMW = require('../middleware/generic/auth');
 const updatePlaylistMW = require('../middleware/playlist/updatePlaylist');
-const addSongMW = require('../middleware/playlist/addSong');
-const getSongListMW = require('../middleware/playlist/getSongList');
+const addSongMW = require('../middleware/song/addSong');
+const getSongListMW = require('../middleware/song/getSongList');
 const deletePlaylistMW = require('../middleware/playlist/deletePlaylist');
-const deleteSongMW = require('../middleware/playlist/deleteSong');
-const saveUserIdtoTplMW = require('../middleware/user/saveUserIdToTpl');
+const deleteSongMW = require('../middleware/song/deleteSong');
 
 const userModel = require('../models/user');
 const songModel = require('../models/song');
@@ -63,7 +62,6 @@ module.exports = app => {
   app.use(
     '/playlist/:playlistid',
     authMW(objectRepository),
-    saveUserIdtoTplMW(objectRepository),
     getPlaylistMW(objectRepository),
     getSongListMW(objectRepository),
     renderMW(objectRepository, 'playlist')

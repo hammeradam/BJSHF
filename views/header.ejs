@@ -47,7 +47,7 @@
                          -->
             </ul>
             <ul class="right hide-on-med-and-down">
-              <% if (typeof userid != 'undefined') { %>
+              <% if (typeof loggedInUserId != 'undefined') { %>
                 <li>
                   <a href="/profile">
                     <i class="material-icons left">face</i>Profile</a>
@@ -78,7 +78,7 @@
                                     <%= typeof user != 'undefined' ? user._id : '' %>
                                 </a>
                             </li> -->
-              <% if (typeof userid != 'undefined') { %>
+              <% if (typeof loggedInUserId != 'undefined') { %>
                 <li>
                   <a href="/profile">
                     <i class="material-icons left">face</i>Profile</a>
