@@ -28,24 +28,34 @@
         </div>
       </div>
 
-      <div class="card teal">
-        <div class="card-tabs teal">
-          <ul class="tabs tabs-fixed-width teal">
+      <div class="card blue-grey">
+        <div class="card-tabs blue-grey">
+          <ul class="tabs tabs-fixed-width blue-grey">
+            <!--
             <li class="tab">
               <a href="#test4" class="white-text">People I Follow</a>
             </li>
+            -->
             <li class="tab">
-              <a href="#ownPlaylists" class="active white-text">My Lists</a>
+              <a href="#ownPlaylists" class="active white-text">
+              <% if (loggedInUserId != user._id){ %>  
+                <%= user.username %>'s lists
+              <% } else { %>
+                my lists
+              <% } %>              
+              </a>
             </li>
             <li class="tab">
               <a href="#otherUsers" class="white-text">Other Users</a>
             </li>
           </ul>
         </div>
-        <div class="card-content teal lighten-4">
+        <div class="card-content blue-grey lighten-4">
+          <!--
           <div id="test4">
             <p>Maybe one day...</p>
           </div>
+          -->
 
           <div id="ownPlaylists">
             <% playlists.forEach(playlist => { %>

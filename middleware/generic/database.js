@@ -19,6 +19,7 @@ module.exports = objectrepository => {
     let user3 = makeUser('Cecil', 'cecil@gmail.com', 'jelszo');
     let user4 = makeUser('Dénes', 'denes@gmail.com', 'jelszo');
     let user5 = makeUser('Elemér', 'elemer@gmail.com', 'jelszo');
+    let user6 = makeUser('hammeradam', 'regelosemailcim@gmail.com', 'jelszo');
 
     const desc =
       'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin non ex ex. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Nam id ex ut quam bibendum ultricies ac non turpis.';
