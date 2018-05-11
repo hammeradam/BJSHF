@@ -10,6 +10,7 @@ module.exports = objectrepository => {
 
     // For later use in ejs
     res.tpl.loggedInUserId = req.session.userid;
+    // res.tpl.user = [];
     return next();
   };
 };

@@ -35,6 +35,19 @@ module.exports = objectrepository => {
           return next();
         }
 
+        // UserModel.findOne(
+        //   {
+        //     username: req.body.username
+        //   },
+        //   (err, result) => {
+        //     if (err || result !== null) {
+        //       console.log(result);
+        //       res.tpl.error.push('Your username is already registered!');
+        //       return next();
+        //     }
+        //   }
+        // );
+
         if (req.body.password1 !== req.body.password2) {
           res.tpl.error.push('The passwords do not match!');
           return next();
