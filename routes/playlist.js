@@ -14,7 +14,7 @@ const playlistModel = require('../models/playlist');
 module.exports = app => {
   let objectRepository = {
     userModel: userModel,
-    songModel: songModel,
+    songModel,
     playlistModel: playlistModel
   };
 

@@ -11,10 +11,10 @@
     </p>
   </div>
   <div class="card-action">
-    <a href="/playlist/<%= playlist._id %>" class="blue-grey-text">View list!</a>
+    <a href="/playlist/<%= playlist._id %>" class="teal-text">View list!</a>
     <% if (loggedInUserId == user._id){ %>
       <a href="/playlist/<%= playlist._id %>/delete">
-        <i class="material-icons blue-grey-text right">delete</i>
+        <i class="material-icons teal-text right">delete</i>
       </a>
       <% } %>
   </div>

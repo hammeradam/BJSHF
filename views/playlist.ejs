@@ -6,20 +6,22 @@
         <%= playlist.name %>
           <% if (loggedInUserId == playlist._owner.toString()){ %>
             <a href="/playlist/<%= playlist._id %>/delete">
-              <i class="medium material-icons blue-grey-text right">delete</i>
+              <i class="medium material-icons teal-text right">delete</i>
             </a>
             <% } %>
       </h1>
+      <div class="divider"></div>
       <p>
         <%= playlist.desc %>
       </p>
-      <div class="row">
+      
+      
         <ul class="collection">
           <% songs.forEach(song => { %>
             <% include songCard %>
               <% }); %>
         </ul>
-      </div>
+      
     </div>
   </main>
 

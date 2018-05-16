@@ -29,6 +29,7 @@
   "homepage": "https://github.com/hammeradam/BJSHF#readme",
   "dependencies": {
     "body-parser": "^1.18.2",
+    "chai": "^4.1.2",
     "ejs": "^2.5.8",
     "express": "^4.16.2",
     "express-session": "^1.15.6",
